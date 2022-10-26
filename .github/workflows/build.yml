@@ -1,5 +1,8 @@
 name: Build
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  #schedule:
+    #- cron:  '* * 2-31/2 * *'
 
 jobs:
   prepare:
@@ -27,6 +30,7 @@ jobs:
       run: |
         python devscripts/update-version.py ${{ steps.version_suffix.outputs.version_suffix }}
         make issuetemplates
+
 
     - name: Push to release
       id: push_release
@@ -107,7 +111,7 @@ jobs:
       run: |
         git clone git@github.com:yt-dlp/homebrew-taps taps/
         python devscripts/update-formulae.py taps/Formula/yt-dlp.rb "${{ needs.prepare.outputs.ytdlp_version }}"
-        git -C taps/ config user.name github-actions
+        git -C taps/ config user.name romoney5
         git -C taps/ config user.email github-actions@example.com
         git -C taps/ commit -am 'yt-dlp: ${{ needs.prepare.outputs.ytdlp_version }}'
         git -C taps/ push
@@ -297,7 +301,8 @@ jobs:
         name: yt-dlp ${{ needs.prepare.outputs.ytdlp_version }}
         target_commitish: ${{ needs.prepare.outputs.head_sha }}
         body: |
-          #### [A description of the various files]((https://github.com/yt-dlp/yt-dlp#release-files)) are in the README
+          #### [A description of the various files](https://github.com/yt-dlpd/yt-dlpd#release-files) are in the README
+          Note: the changelog might be empty, check the [recent commits](https://github.com/romoney5/yt-dlpd/commits/master) for the newest changes
 
           ---
           <details open><summary><h3>Changelog</summary>
