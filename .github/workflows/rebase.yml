@@ -2,7 +2,7 @@ name: Rebase on Upstream
 
 on:
   schedule:
-  - cron: "*/35 * * * *"  # run every 35 minutes
+  - cron: "*/75 * * * *"  # run every 75 minutes
   workflow_dispatch:    # run manually
 
 jobs:
