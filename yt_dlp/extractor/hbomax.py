@@ -3,7 +3,7 @@ from ..utils import int_or_none
 
 
 class HBOMaxIE(TurnerBaseIE):
-    #_VALID_URL = r'https?://(?:www\.)?hbomax\.com/video/(?:[^/]+/)+(?P<id>[^/?#]+)-(?:clip|episode)\.html'
+    _VALID_URL = r'https?://(?:www\.)?hbomax\.com/(?:[^/]+/)'
     _TEST = {
         'url': 'https://www.hbomax.com/collections/watch-free/barry-s1-e1',
         'info_dict': {
