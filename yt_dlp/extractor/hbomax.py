@@ -3,14 +3,14 @@ from ..utils import int_or_none
 
 
 class HBOMaxIE(TurnerBaseIE):
-    _VALID_URL = r'https?://(?:www\.)?hbomax\.com/video/(?:[^/]+/)+(?P<id>[^/?#]+)-(?:clip|episode)\.html'
+    #_VALID_URL = r'https?://(?:www\.)?hbomax\.com/video/(?:[^/]+/)+(?P<id>[^/?#]+)-(?:clip|episode)\.html'
     _TEST = {
         'url': 'https://www.hbomax.com/collections/watch-free/barry-s1-e1',
         'info_dict': {
             'id': '6e3375097f63874ebccec7ef677c1c3845fa850e',
             'ext': 'mp4',
-            'title': 'How to Draw Upgrade',
-            'description': 'md5:2061d83776db7e8be4879684eefe8c0f',
+            'title': 'Chapter One: Make Your Mark',
+            #'description': 'md5:2061d83776db7e8be4879684eefe8c0f',
         },
         'params': {
             # m3u8 download
@@ -36,7 +36,7 @@ class HBOMaxIE(TurnerBaseIE):
         info = self._extract_ngtv_info(
             media_id, {'networkId': 'hbomax'}, {
                 'url': url,
-                'site_name': 'HBOMax',
+                'site_name': 'HBOmax',
                 'auth_required': find_field('authType', 'auth type') != 'unauth',
             })
 
